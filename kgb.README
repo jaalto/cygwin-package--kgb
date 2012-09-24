@@ -1,29 +1,22 @@
 <PKG>
 ------------------------------------------
 
-<One line description - sdesc of setup.hint>
+Archiver for .kgb files
 
-<Short description, paragraph - ldesc of setup.hint>
-
-<fFor perl>
-Before use, install additional perl modules:
-
-    cpan MODULE [MODULE ...]
-
-    perl -MCPAN -e 'install $_ for @ARGV' \
-        Time::ParseDate Time::Period
+This is an archiver (compressor/decompressor) for files in the KGB format,
+which provides high compression rates at the expense of memory and CPU time.
+The KGB archiver based on the PAQ6 maximum compression archiver by Matt Mahoney.
 
 Runtime requirements:
-  cygwin
 
 Build requirements:
-  cygwin
 
 Canonical homepage:
-  http://... <where the upstream, non-cygwinize package lives>
+  https://sourceforge.net/projects/kgbarchiver
+  http://packages.debian.org/kgb
 
 Canonical download:
-  ftp://...  <ditto>
+  See above
 
 Version control repository:
 
@@ -34,14 +27,14 @@ Forum / Wiki:
 IRC channel:
 
 Upstream contact:
-  Maintainer:
-  Bugs:
+  Maintainer: Tomasz Pawlak <tomekp17@gmail.com>, <tomekpawlak@users.sf.net>
+  Bugs: https://sourceforge.net/tracker/?group_id=162546&atid=824210
 
 License:
-  GPL
+  GPL-2
 
 Language:
-  C
+  C++
 
 ------------------------------------------
 
