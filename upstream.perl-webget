@@ -1,6 +1,2 @@
-# Example for sourceforge. The *mesh* is mirror Duesseldorf, Germany
-# tag1: msmtp
-#  http://prdownloads.sourceforge.net/foo/foo-1.4.5.tar.bz2 mirror:mesh page: new: x:
-
-tag1: package
-  http://example.com/page pregexp:tar.gz file:program-0.1.1.tar.gz new: x:
+tag1: kgb
+  http://packages.debian.org/unstable/kgb pregexp:orig.tar.gz file:kgb_1.0b4+ds.orig.tar.gz new: x:
