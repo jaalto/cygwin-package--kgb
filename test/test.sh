@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 TMPDIR=${TMPDIR:-/tmp}
 
 Run ()
@@ -9,11 +11,14 @@ Run ()
     eval "$@"
 }
 
-file=$TMPDIR/archive.$$.kgb
+TMPBASE=$TMPDIR/tmp.$$
+file=$TMPBASE.archive.kgb
 
-trap "rm -f $file" 0 1 2 3 15
+trap "rm -f $TMPBASE*" 0 1 2 3 15
 
-Run "TEST make archive:"  pax -wf $file .
-Run "TEST list contents:" "pax -f  $file | head"
+Run ":: TEST create archive:"  kgb $file .
+
+cd /tmp
+Run ":: TEST extract archive:" kgb $file
 
 # End of file
