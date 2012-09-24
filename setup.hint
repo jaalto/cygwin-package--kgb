@@ -1,10 +1,6 @@
-# See http://cygwin.com/setup.html   The 'category' can be:
-# Accessibility Admin Archive Audio Base Comm Database Devel Doc Editors
-# Games Gnome Graphics Interpreters Libs Mail Math Mingw Net Perl Python
-# Publishing Security Shells System Text Utils Web X11
-sdesc: ""
-ldesc: ""
-category: name [name...]
-requires: cygwin [package...]
-external-source: package
-conflicts:
+sdesc: "Archiver for .kgb files"
+ldesc: "This is an archiver (compressor/decompressor) for files in the KGB format,
+which provides high compression rates at the expense of memory and CPU time.
+The KGB archiver based on the PAQ6 maximum compression archiver by Matt Mahoney."
+category: Archive
+requires: cygwin
