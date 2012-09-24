@@ -1,0 +1,40 @@
+From 66c1a80a6497e4332965fd688b51a68e50efe3e9 Mon Sep 17 00:00:00 2001
+From: Jari Aalto <jari.aalto@cante.net>
+Date: Mon, 24 Sep 2012 15:38:45 +0300
+Subject: [PATCH] Use standard functions (Gcc)
+Organization: Private
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Jari Aalto <jari.aalto@cante.net>
+---
+ kgb_arch_posix_by_slawek.cpp |    6 +++---
+ 1 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/kgb_arch_posix_by_slawek.cpp b/kgb_arch_posix_by_slawek.cpp
+index 6ef0e5e..4ca06c9 100644
+--- a/kgb_arch_posix_by_slawek.cpp
++++ b/kgb_arch_posix_by_slawek.cpp
+@@ -2397,16 +2397,16 @@ int main(int argc, char** argv) {
+ 
+     // Get file sizes
+     for (int i=0; i<int(filename.size()); ++i) {
+-      int f=open64(filename[i].c_str(), O_RDONLY);
++      int f=open(filename[i].c_str(), O_RDONLY);
+       if (!f) {
+         printf("File not found, skipping: %s\n",
+           filename[i].c_str());
+         filesize.push_back(-1);
+       }
+       else {
+-        struct stat64 finfo;
++        struct stat finfo;
+ 
+-        if (fstat64(f, &finfo) != 0)
++        if (fstat(f, &finfo) != 0)
+           perror("fstat64() error");
+         else
+         filesize.push_back(finfo.st_size);
+-- 
+1.7.9
+

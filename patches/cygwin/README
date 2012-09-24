@@ -1,0 +1,10 @@
+About cancellling debian patch "lfs.patch"
+
+	See
+	http://www.gnu.org/savannah-checkouts/gnu/libc/manual/html_node/Opening-Streams.html
+
+	fopen64
+
+	"If the sources are compiled with _FILE_OFFSET_BITS == 64 on a 32
+	bits machine this function is available under the name fopen and so
+	transparently replaces the old interface."

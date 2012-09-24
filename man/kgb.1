@@ -1,0 +1,66 @@
+.\" Author: Raphael Geissert <atomo64@gmail.com>
+.\" Copyright (C) 2007, 2008 Raphael Geissert <atomo64@gmail.com>
+.\"
+.\" This is free software; you may redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as
+.\" published by the Free Software Foundation; either version 2,
+.\" or (at your option) any later version.
+.\"
+.\" This is distributed in the hope that it will be useful, but
+.\" WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with the Debian GNU/Linux system; if not, write to the Free
+.\" Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
+.\" 02111-1307 USA
+.TH kgb "1" "March 2008"
+.SH NAME
+kgb \- .kgb files archiver
+.SH SYNOPSIS
+kgb [-<m>] archive.kgb [filename  ...] [@files_listing @...]
+.PP
+kgb FILE.kgb
+.SH DESCRIPTION
+.B kgb
+is a file archiver with high-compression rates (and high CPU and memory cost).
+.SH OPTIONS
+.SS Compressing:
+.TP
+.B  \-<m>  
+Set compression level (memory usage), values:
+   0: 2 MB (fastest)
+   1: 3 MB
+   2: 6 MB
+   3: 18 MB (default)
+   4: 64 MB
+   5: 154 MB
+   6: 202 MB
+   7: 404 MB
+   8: 808 MB
+   9:
+.B 1616 MB
+(best compression)
+.TP
+.B  archive.kgb  
+Filename of the new KGB archive. It must
+.B not
+exist, otherwise it will fail.
+.TP
+.B  [filename ...]   
+File or list of files to compress.
+.TP
+.B  [@files_listing @...]
+File(s) containing a list of file names to be compressed, separated by a new line.
+.SS Uncompressing:
+.B FILE.kgb
+ KGB archive to extract.
+.SH AUTHOR
+.TP
+KGB Archiver v1.0b4, (C) 2005\-2006 Tomasz Pawlak; Based on PAQ6 by Matt Mahoney; mod by Slawek <poczta-sn@gazeta.pl>.
+.PP
+This manual page was written by Raphael Geissert
+.nh
+<atomo64@gmail.com> 
+for the \fBDebian\fP system (but may be used by others).

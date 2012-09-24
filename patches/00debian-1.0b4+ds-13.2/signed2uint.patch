@@ -1,0 +1,13 @@
+Index: kgb-arch-posix-by-slawek_1.0b4+ds/kgb_arch_posix_by_slawek.cpp
+===================================================================
+--- kgb-arch-posix-by-slawek_1.0b4+ds.orig/kgb_arch_posix_by_slawek.cpp
++++ kgb-arch-posix-by-slawek_1.0b4+ds/kgb_arch_posix_by_slawek.cpp
+@@ -2337,7 +2337,7 @@ int _mode = 0;
+             string fname=""; FILE* File;
+             File=fopen(argv[i],"r");
+             if(!File) {//checks if file @sth.ext does not exist
+-               for(int a=1; a<strlen(argv[i]); a++)
++               for(uint a=1; a<strlen(argv[i]); a++)
+                   fname+=argv[i][a];
+                File=fopen(fname.c_str(),"r");
+                if(!File) {

@@ -1,0 +1,10 @@
+--- a/kgb_arch_posix_by_slawek.cpp
++++ b/kgb_arch_posix_by_slawek.cpp
+@@ -578,6 +578,7 @@
+ #include <map>
+ #include <sys/stat.h>
+ #include <fcntl.h>
++#include <unistd.h>
+ #undef hash
+ using namespace std;
+ 

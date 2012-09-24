@@ -1,0 +1,8 @@
+char2int.patch
+usage_info.patch
+missing_cstring_include.patch
+signed2uint.patch
+bad_strings.patch
+lfs.patch
+32bits.patch
+gcc-4.7.patch

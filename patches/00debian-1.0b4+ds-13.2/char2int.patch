@@ -1,0 +1,13 @@
+Index: kgb-arch-posix-by-slawek_1.0b4+ds/kgb_arch_posix_by_slawek.cpp
+===================================================================
+--- kgb-arch-posix-by-slawek_1.0b4+ds.orig/kgb_arch_posix_by_slawek.cpp
++++ kgb-arch-posix-by-slawek_1.0b4+ds/kgb_arch_posix_by_slawek.cpp
+@@ -1122,7 +1122,7 @@ Hashtable<T>::Hashtable(U32 n): N(n>4?n-
+   char *p=(char*)calloc((16<<N)+64, 1);
+   if (!p)
+     handler();
+-  p+=64-(((int)p)&63);  // Aligned
++  p+=64-(((long)p)&63);  // Aligned
+   table=(HashElement*)p;
+ }
+ 

@@ -1,0 +1,100 @@
+Index: kgb-arch-posix-by-slawek_1.0b4+ds/kgb_arch_posix_by_slawek.cpp
+===================================================================
+--- kgb-arch-posix-by-slawek_1.0b4+ds.orig/kgb_arch_posix_by_slawek.cpp
++++ kgb-arch-posix-by-slawek_1.0b4+ds/kgb_arch_posix_by_slawek.cpp
+@@ -575,6 +575,8 @@ Also, give yourself credit in the help m
+ #include <vector>
+ #include <algorithm>
+ #include <map>
++#include <sys/stat.h>
++#include <fcntl.h>
+ #undef hash
+ using namespace std;
+ 
+@@ -2210,7 +2212,7 @@ int _mode = 0;
+ 
+   // File names and sizes from input or archive
+   vector<string> filename; // List of names
+-  vector<long> filesize;   // Size or -1 if error
++  vector<long long> filesize;   // Size or -1 if error
+   int uncompressed_bytes=0, compressed_bytes=0;  // Input, output sizes
+ 
+   // Extract files
+@@ -2265,11 +2267,11 @@ int _mode = 0;
+     // Extract files from archive data
+     Transformer e(DECOMPRESS, archive);
+     for (int i=0; i<int(filename.size()); ++i) {
+-      printf("%10ldKB %s: ", filesize[i]/1024, filename[i].c_str());
++      printf("%10lldKB %s: ", filesize[i]/1024, filename[i].c_str());
+ 
+       // Compare with existing file
+       FILE* f=fopen(filename[i].c_str(), "rb");
+-      const long size=filesize[i];
++      const long long size=filesize[i];
+       uncompressed_bytes+=size;
+       if (f) {
+         bool different=false;
+@@ -2391,16 +2393,21 @@ int _mode = 0;
+ 
+     // Get file sizes
+     for (int i=0; i<int(filename.size()); ++i) {
+-      FILE* f=fopen(filename[i].c_str(), "rb");
++      int f=open64(filename[i].c_str(), O_RDONLY);
+       if (!f) {
+         printf("File not found, skipping: %s\n",
+           filename[i].c_str());
+         filesize.push_back(-1);
+       }
+       else {
+-        fseek(f, 0L, SEEK_END);
+-        filesize.push_back(ftell(f));
+-        fclose(f);
++        struct stat64 finfo;
++
++        if (fstat64(f, &finfo) != 0)
++          perror("fstat64() error");
++        else
++        filesize.push_back(finfo.st_size);
++
++        close(f);
+       }
+     }
+     if (filesize.empty() || *max_element(filesize.begin(), filesize.end())<0){
+@@ -2417,7 +2424,7 @@ int _mode = 0;
+     fprintf(archive, PROGNAME " -%d\r\n", MEM);
+     for (int i=0; i<int(filename.size()); ++i) {
+       if (filesize[i]>=0)
+-        fprintf(archive, "%ld\t%s\r\n", filesize[i], filename[i].c_str());
++        fprintf(archive, "%lld\t%s\r\n", filesize[i], filename[i].c_str());
+     }
+     putc(032, archive);  // MSDOS EOF
+     putc('\f', archive);
+@@ -2425,15 +2432,15 @@ int _mode = 0;
+ 
+     // Write data
+     Transformer e(COMPRESS, archive);
+-    long file_start=ftell(archive);
++    long long file_start=ftell(archive);
+     for (int i=0; i<int(filename.size()); ++i) {
+-      const long size=filesize[i];
++      const long long size=filesize[i];
+       if (size>=0) {
+         uncompressed_bytes+=size;
+-        printf("%-23s %10ldKB -> ", filename[i].c_str(), size/1024);
++        printf("%-23s %10lldKB -> ", filename[i].c_str(), size/1024);
+         FILE* f=fopen(filename[i].c_str(), "rb");
+         int c;
+-        for (long j=0; j<size; ++j) {
++        for (long long j=0; j<size; ++j) {
+           if (f)
+             c=getc(f);
+           else
+@@ -2442,7 +2449,7 @@ int _mode = 0;
+         }
+         if (f)
+           fclose(f);
+-        printf("%ldKB\n", (ftell(archive)-file_start)/1024);
++        printf("%lldKB\n", (ftell(archive)-file_start)/1024);
+         file_start=ftell(archive);
+       }
+     }

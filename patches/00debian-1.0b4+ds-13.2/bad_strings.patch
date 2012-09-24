@@ -1,0 +1,40 @@
+Index: kgb-1.0b4+ds-12/kgb_arch_posix_by_slawek.cpp
+===================================================================
+--- kgb-1.0b4+ds-12.orig/kgb_arch_posix_by_slawek.cpp
++++ kgb-1.0b4+ds-12/kgb_arch_posix_by_slawek.cpp
+@@ -2187,7 +2187,7 @@ int _mode = 0;
+       " -0       \t 2 MB (the fastest compression)\n"
+       " -1       \t 3 MB\n"
+       " -2       \t 6 MB\n"
+-      " -3       \t 18 MB (dafault)\n"
++      " -3       \t 18 MB (default)\n"
+       " -4       \t 64 MB\n"
+       " -5       \t 154 MB\n"
+       " -6       \t 202 MB\n"
+@@ -2341,7 +2341,7 @@ int _mode = 0;
+                   fname+=argv[i][a];
+                File=fopen(fname.c_str(),"r");
+                if(!File) {
+-                  printf("Cannot find directive file %s.\n",fname.c_str());
++                  printf("Cannot find listing file %s.\n",fname.c_str());
+                   continue;
+                }
+                else {
+@@ -2364,7 +2364,7 @@ int _mode = 0;
+                         }
+                      }
+                      else {
+-                        printf("The file %s is not valid directive file%d.\n",fname.c_str(),fchar);
++                        printf("The file %s is not valid listing file%d.\n",fname.c_str(),fchar);
+                         break;
+                      }
+                   }
+@@ -2379,7 +2379,7 @@ int _mode = 0;
+         }
+     else {
+       printf(
+-        "Type filenames to compression, finish empty line:\n");
++        "Type filenames to compress, finish with empty line:\n");
+       while (true) {
+         string s=getline(stdin);
+         if (s=="")

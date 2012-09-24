@@ -1,0 +1,12 @@
+Index: kgb-arch-posix-by-slawek_1.0b4+ds/kgb_arch_posix_by_slawek.cpp
+===================================================================
+--- kgb-arch-posix-by-slawek_1.0b4+ds.orig/kgb_arch_posix_by_slawek.cpp
++++ kgb-arch-posix-by-slawek_1.0b4+ds/kgb_arch_posix_by_slawek.cpp
+@@ -565,6 +565,7 @@ Also, give yourself credit in the help m
+ #define hash ___hash  // To avoid Digital MARS name collision
+ #include <cstdio>
+ #include <cstdlib>
++#include <cstring>
+ #include <cctype>
+ #include <cmath>
+ #include <ctime>
