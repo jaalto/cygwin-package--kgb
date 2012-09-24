@@ -1,5 +1,4 @@
 #!/bin/sh
-set -x
 
 # These are Gcc link flags
 LDFLAGS="-D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64"
