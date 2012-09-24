@@ -10,6 +10,7 @@ The KGB archiver based on the PAQ6 maximum compression archiver by Matt Mahoney.
 Runtime requirements:
 
 Build requirements:
+  quilt
 
 Canonical homepage:
   https://sourceforge.net/projects/kgbarchiver
