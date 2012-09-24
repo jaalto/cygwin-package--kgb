@@ -1,25 +1,26 @@
 To: cygwin-announce@cygwin.com
-Subject: Updated: package N.N
-Subject: New package: package N.N -- decription
+Subject: Updated: package N.N -- Archiver for .kgb files
 --text follows this line--
 
 PACKAGE DESCRIPTION
 ===================
 
-Homepage:
-License : GPL
+Homepage: https://sourceforge.net/projects/kgbarchiver
+License : GPL-2
 
-<write description here>
+This is an archiver (compressor/decompressor) for files in the KGB format,
+which provides high compression rates at the expense of memory and CPU time.
+The KGB archiver based on the PAQ6 maximum compression archiver by Matt Mahoney.
 
 CHANGES SINCE LAST RELEASE
 ==========================
 
-<Add this section if this is update>
+None.
 
 INSTALL OR UPGRADE NOTES
 ========================
 
-<if anything to watch out>
+Sandard install.
 
 CYGWIN INSTALLATION INFORMATION
 ===============================
