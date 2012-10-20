@@ -3,4 +3,4 @@ ldesc: "This is an archiver (compressor/decompressor) for files in the KGB forma
 which provides high compression rates at the expense of memory and CPU time.
 The KGB archiver based on the PAQ6 maximum compression archiver by Matt Mahoney."
 category: Archive
-requires: cygwin
+requires: libgcc1 libstdc++6

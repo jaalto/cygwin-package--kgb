@@ -8,8 +8,11 @@ which provides high compression rates at the expense of memory and CPU time.
 The KGB archiver based on the PAQ6 maximum compression archiver by Matt Mahoney.
 
 Runtime requirements:
+  libgcc1
+  libstdc++6
 
 Build requirements:
+  libstdc++6-devel
   quilt
 
 Canonical homepage:
